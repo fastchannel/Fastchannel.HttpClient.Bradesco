@@ -17,8 +17,8 @@ jobs:
 
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
-      SOLUTION_FILE: ${{ github.workspace }}/Fastchannel.HttpClient.Bndes.sln
-      CSPROJECT_FILE: ${{ github.workspace }}/src/Fastchannel.HttpClient.Bndes/Fastchannel.HttpClient.Bndes.csproj
+      SOLUTION_FILE: ${{ github.workspace }}/Fastchannel.HttpClient.Bradesco.sln
+      CSPROJECT_FILE: ${{ github.workspace }}/src/Fastchannel.HttpClient.Bradesco/Fastchannel.HttpClient.Bradesco.csproj
 
     steps:
       - run: git config --global advice.detachedHead false
@@ -48,7 +48,7 @@ jobs:
         with:
           dotnet-version: 8.x
           cache: true
-          cache-dependency-path: src/Fastchannel.HttpClient.Bndes/packages.lock.json
+          cache-dependency-path: src/Fastchannel.HttpClient.Bradesco/packages.lock.json
       
       # Restore NuGet packages
       - name: Restore NuGet Packages
@@ -91,12 +91,12 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
-          name: Bndes SDK ${{ github.ref_name }}
+          name: Bradesco SDK ${{ github.ref_name }}
           tag_name: ${{ github.ref_name }}
           token: ${{ secrets.GITHUB_TOKEN }}
           files: artifacts/*.nupkg
           body: |
-            This release contains the latest build of the Bndes SDK for the .NET Standard 2.0 class library.
+            This release contains the latest build of the Bradesco SDK for the .NET Standard 2.0 class library.
           draft: false
           prerelease: false
           make_latest: true
